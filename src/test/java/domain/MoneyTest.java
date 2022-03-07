@@ -34,4 +34,14 @@ class MoneyTest {
     void moneyInsert() {
         assertDoesNotThrow(() -> new Money(1500));
     }
+
+    @ParameterizedTest
+    @ValueSource(ints = {1100, 2000, 3300, 4000, 5500, 6000, 7000, 8000, 9900, 10000})
+    @DisplayName("입력 금액으로 생성할 수 있는 로또 개수 확인")
+    void checkPurchasableNumber(int amount) {
+        int actual = new Money(amount).getPurchasableNumber();
+        int expected = amount / 1000;
+
+        assertThat(actual).isEqualTo(expected);
+    }
 }
