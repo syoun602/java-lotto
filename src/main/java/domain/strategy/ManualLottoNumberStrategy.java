@@ -1,6 +1,5 @@
 package domain.strategy;
 
-import domain.LottoNumber;
 import domain.LottoNumbers;
 import domain.PurchaseCount;
 

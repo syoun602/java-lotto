@@ -5,7 +5,6 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -18,13 +17,10 @@ class LottosTest {
                 PurchaseCount.from(new Money(1000), 1));
         Lottos secondLottos = new Lottos(new ManualLottoNumberStrategy(List.of(List.of(7, 8, 9, 10, 11, 12))),
                 PurchaseCount.from(new Money(1000), 1));
-        firstLottos.concatenate(secondLottos);
+        Lottos lottos = firstLottos.concatenate(secondLottos);
 
-        List<Integer> numbers = firstLottos.concatenate(secondLottos).getLottos().stream()
-                .map(LottoNumbers::getLottoNumbers)
-                .flatMap(List::stream)
-                .collect(Collectors.toList());
-
-        assertThat(numbers).containsExactly(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12);
+        assertThat(lottos.getLottos())
+                .contains(firstLottos.getLottos().get(0))
+                .contains(secondLottos.getLottos().get(0));
     }
 }
