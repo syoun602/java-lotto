@@ -93,7 +93,7 @@ class WinningLottoTest {
                 .map(LottoNumber::getInstance)
                 .collect(Collectors.toList());
 
-        WinningLotto winningLotto = new WinningLotto(new LottoNumbers(input), LottoNumber.getInstance(7));
+        WinningLotto winningLotto = new WinningLotto(new LottoNumbers(input), LottoNumber.getInstance(11));
 
         assertThat(winningLotto.rank(lottoNumbers))
                 .isEqualTo(LottoRank.NOTHING);
