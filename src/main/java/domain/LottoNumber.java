@@ -10,7 +10,6 @@ public class LottoNumber implements Comparable<LottoNumber> {
     private static final int MINIMUM_LOTTO_NUMBER = 1;
     private static final int MAXIMUM_LOTTO_NUMBER = 45;
     private static final String INVALID_LOTTO_NUMBER_RANGE = "번호는 1부터 45 사이여야 합니다.";
-    private static final String INVALID_BONUS_NUMBER = "보너스 번호는 당첨 번호와 중복될 수 없습니다.";
     private static final Map<Integer, LottoNumber> lottoNumbers;
 
     private final int number;
@@ -30,14 +29,6 @@ public class LottoNumber implements Comparable<LottoNumber> {
             throw new IllegalArgumentException(INVALID_LOTTO_NUMBER_RANGE);
         }
         return lottoNumbers.get(number);
-    }
-
-    public static LottoNumber createBonus(int inputBonusNumber, LottoNumbers winningNumbers) {
-        LottoNumber bonusNumber = LottoNumber.getInstance(inputBonusNumber);
-        if (winningNumbers.contains(bonusNumber)) {
-            throw new IllegalArgumentException(INVALID_BONUS_NUMBER);
-        }
-        return bonusNumber;
     }
 
     @Override
