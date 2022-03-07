@@ -18,19 +18,12 @@ public class LottoMachine {
     }
 
     public WinningStat createWinningStat(Lottos lottos, WinningLotto winningLotto) {
-        Map<LottoRank, Integer> ranks = new HashMap<>(); // enumMap 굿
-        initializeRank(ranks);
+        Map<LottoRank, Integer> ranks = new HashMap<>();
 
         for (LottoNumbers lotto : lottos.getLottos()) {
             ranks.merge(winningLotto.rank(lotto), INCREASE_VALUE, Integer::sum);
         }
 
         return new WinningStat(ranks);
-    }
-
-    private void initializeRank(Map<LottoRank, Integer> ranks) {
-        for (LottoRank lottoRank : LottoRank.values()) {
-            ranks.put(lottoRank, 0);
-        }
     }
 }

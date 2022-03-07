@@ -54,10 +54,29 @@ class LottoMachineTest {
                 new WinningLotto(winningNumbers, LottoNumber.getInstance(7)));
 
         Map<LottoRank, Integer> ranks = new HashMap<>();
-        for (LottoRank lottoRank : LottoRank.values()) {
-            ranks.put(lottoRank, 0);
-        }
+
         ranks.put(LottoRank.FIRST, 1);
+        WinningStat expected = new WinningStat(ranks);
+
+        assertThat(actual).isEqualTo(expected);
+    }
+
+    @Test
+    @DisplayName("로또 당첨 통계 2등 확인")
+    void some() {
+        LottoMachine lottoMachine = new LottoMachine();
+        Lottos lottos = new Lottos(new ManualLottoNumberStrategy(List.of(List.of(1, 2, 3, 4, 5, 6))),
+                PurchaseCount.from(new Money(1000), 1));
+        List<LottoNumber> inputWinningNumbers = IntStream.of(2, 1, 4, 3, 5, 7)
+                .mapToObj(LottoNumber::getInstance)
+                .collect(Collectors.toList());
+        LottoNumbers winningNumbers = new LottoNumbers(inputWinningNumbers);
+        WinningStat actual = lottoMachine.createWinningStat(lottos,
+                new WinningLotto(winningNumbers, LottoNumber.getInstance(6)));
+
+        Map<LottoRank, Integer> ranks = new HashMap<>();
+
+        ranks.put(LottoRank.SECOND, 1);
         WinningStat expected = new WinningStat(ranks);
 
         assertThat(actual).isEqualTo(expected);

@@ -30,7 +30,7 @@ class WinningLottoTest {
 
         WinningLotto winningLotto = new WinningLotto(new LottoNumbers(input), LottoNumber.getInstance(7));
 
-        assertThat(winningLotto.rank(WinningLottoTest.lottoNumbers))
+        assertThat(winningLotto.rank(lottoNumbers))
                 .isEqualTo(LottoRank.FIRST);
     }
 
@@ -41,9 +41,9 @@ class WinningLottoTest {
                 .map(LottoNumber::getInstance)
                 .collect(Collectors.toList());
 
-        WinningLotto winningLotto = new WinningLotto(new LottoNumbers(input), LottoNumber.getInstance(7));
+        WinningLotto winningLotto = new WinningLotto(new LottoNumbers(input), LottoNumber.getInstance(6));
 
-        assertThat(winningLotto.rank(WinningLottoTest.lottoNumbers))
+        assertThat(winningLotto.rank(lottoNumbers))
                 .isEqualTo(LottoRank.SECOND);
     }
 
@@ -56,7 +56,7 @@ class WinningLottoTest {
 
         WinningLotto winningLotto = new WinningLotto(new LottoNumbers(input), LottoNumber.getInstance(7));
 
-        assertThat(winningLotto.rank(WinningLottoTest.lottoNumbers))
+        assertThat(winningLotto.rank(lottoNumbers))
                 .isEqualTo(LottoRank.THIRD);
     }
 
@@ -69,7 +69,7 @@ class WinningLottoTest {
 
         WinningLotto winningLotto = new WinningLotto(new LottoNumbers(input), LottoNumber.getInstance(7));
 
-        assertThat(winningLotto.rank(WinningLottoTest.lottoNumbers))
+        assertThat(winningLotto.rank(lottoNumbers))
                 .isEqualTo(LottoRank.FOURTH);
     }
 
@@ -82,7 +82,7 @@ class WinningLottoTest {
 
         WinningLotto winningLotto = new WinningLotto(new LottoNumbers(input), LottoNumber.getInstance(7));
 
-        assertThat(winningLotto.rank(WinningLottoTest.lottoNumbers))
+        assertThat(winningLotto.rank(lottoNumbers))
                 .isEqualTo(LottoRank.FIFTH);
     }
 
@@ -95,7 +95,7 @@ class WinningLottoTest {
 
         WinningLotto winningLotto = new WinningLotto(new LottoNumbers(input), LottoNumber.getInstance(7));
 
-        assertThat(winningLotto.rank(WinningLottoTest.lottoNumbers))
+        assertThat(winningLotto.rank(lottoNumbers))
                 .isEqualTo(LottoRank.NOTHING);
     }
 }

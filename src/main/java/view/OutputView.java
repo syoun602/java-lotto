@@ -44,10 +44,11 @@ public class OutputView {
     private static String createStatView(Map<LottoRank, Integer> statistics, List<LottoRank> lottoRanks) {
         StringBuilder stringBuilder = new StringBuilder();
         for (LottoRank lottoRank : lottoRanks) {
+            int count = statistics.get(lottoRank) == null ? 0 : statistics.get(lottoRank);
             stringBuilder.append(lottoRank.getMatchNumber()).append("개 일치")
                     .append(checkSecond(lottoRank))
                     .append(" (").append(lottoRank.getPrize()).append(") - ")
-                    .append(statistics.get(lottoRank)).append("개\n");
+                    .append(count).append("개\n");
         }
 
         return stringBuilder.toString();

@@ -22,7 +22,7 @@ public class WinningLotto {
 
     public LottoRank rank(LottoNumbers lottoNumbers) {
         int count = this.lottoNumbers.countDuplicateNumbers(lottoNumbers);
-        boolean hasBonus = this.lottoNumbers.contains(bonusNumber);
+        boolean hasBonus = lottoNumbers.contains(this.bonusNumber);
 
         return LottoRank.valueOf(count, hasBonus);
     }

@@ -39,6 +39,7 @@ public enum LottoRank {
     }
 
     private static LottoRank checkSecondOrThird(boolean bonus) {
+        System.out.println(bonus);
         if (bonus) {
             return LottoRank.SECOND;
         }

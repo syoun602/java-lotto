@@ -12,6 +12,7 @@ public class WinningStat {
 
     public double calculateProfit(int ticketPrice) {
         long totalPrize = Arrays.stream(LottoRank.values())
+                .filter(rank -> getStat().containsKey(rank))
                 .mapToLong(rank -> (long) rank.getPrize() * stat.get(rank))
                 .reduce(0, Long::sum);
 
@@ -19,6 +20,13 @@ public class WinningStat {
                 .reduce(0, Integer::sum);
 
         return (double) totalPrize / (num * ticketPrice);
+    }
+
+    @Override
+    public String toString() {
+        return "WinningStat{" +
+                "stat=" + stat +
+                '}';
     }
 
     @Override
